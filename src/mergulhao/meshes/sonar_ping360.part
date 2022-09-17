@@ -1,0 +1,13 @@
+{
+    "configuration": "default",
+    "documentId": "8a39f00045ca3f760abed2bb",
+    "documentMicroversion": "2032f73c6ed88051a58ff9cd",
+    "elementId": "b7306441ea74be82d104f3c7",
+    "fullConfiguration": "default",
+    "id": "Mez8M6q0iJJBuktYX",
+    "isStandardContent": false,
+    "name": "sonar_ping360 <1>",
+    "partId": "JID",
+    "suppressed": false,
+    "type": "Part"
+}

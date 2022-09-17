@@ -1,0 +1,1243 @@
+<sdf version="1.6">
+<model name="onshape">
+<link name="casco">
+<frame name="casco_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="casco_0_casco_visual">
+<pose>0 0 0 0 -0 0</pose>
+<geometry>
+<mesh><uri>file://casco.stl</uri></mesh>
+</geometry>
+<material><ambient>0.32549 0.529412 0.752941 1</ambient><diffuse>0.32549 0.529412 0.752941 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="casco_0_casco_visual">
+<pose>0 0 0 0 -0 0</pose>
+<geometry>
+<mesh><uri>file://myrobot//casco.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="casco_frame">0.0274366 6.90042e-06 -0.053626 0 0 0</pose>
+<mass>1.36255</mass>
+<inertia><ixx>0.00486446</ixx><ixy>3.48953e-06</ixy><ixz>0.00021415</ixz><iyy>0.0164359</iyy><iyz>-8.49177e-07</iyz><izz>0.0173907</izz></inertia>
+</inertial>
+</link>
+
+<link name="thruster_base">
+<frame name="thruster_base_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="thruster_base_0_thruster_base_visual">
+<pose>3.99584e-05 -2.44379e-10 -0.169 4.93038e-32 7.31806e-32 -1.5708</pose>
+<geometry>
+<mesh><uri>file://thruster_base.stl</uri></mesh>
+</geometry>
+<material><ambient>0.792157 0.819608 0.933333 1</ambient><diffuse>0.792157 0.819608 0.933333 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="thruster_base_0_thruster_base_visual">
+<pose>3.99584e-05 -2.44379e-10 -0.169 4.93038e-32 7.31806e-32 -1.5708</pose>
+<geometry>
+<mesh><uri>file://myrobot//thruster_base.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="thruster_base_frame">-0.004012 9.26237e-07 -0.168414 0 0 0</pose>
+<mass>183.458</mass>
+<inertia><ixx>0.178593</ixx><ixy>1.24113e-06</ixy><ixz>0.000679623</ixz><iyy>0.16158</iyy><iyz>-1.15742e-06</iyz><izz>0.157026</izz></inertia>
+</inertial>
+</link>
+
+<link name="thruster_helice">
+<frame name="thruster_helice_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="thruster_helice_0_thruster_helice_visual">
+<pose>-0.000107667 -2.44379e-10 -0.169 -1.3221e-15 -6.23748e-31 -1.5708</pose>
+<geometry>
+<mesh><uri>file://thruster_helice.stl</uri></mesh>
+</geometry>
+<material><ambient>0.792157 0.819608 0.933333 1</ambient><diffuse>0.792157 0.819608 0.933333 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="thruster_helice_0_thruster_helice_visual">
+<pose>-0.000107667 -2.44379e-10 -0.169 -1.3221e-15 -6.23748e-31 -1.5708</pose>
+<geometry>
+<mesh><uri>file://myrobot//thruster_helice.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="thruster_helice_frame">-0.0076412 -1.45886e-08 -0.168998 0 0 0</pose>
+<mass>0.00921082</mass>
+<inertia><ixx>3.82582e-06</ixx><ixy>-3.38867e-11</ixy><ixz>-4.77514e-11</ixz><iyy>2.62673e-06</iyy><iyz>3.02105e-10</iyz><izz>2.62649e-06</izz></inertia>
+</inertial>
+</link>
+
+<joint name="helice_thruster" type="revolute">
+<pose>-0.00994967 -2.44379e-10 -0.169 1.5708 7.31806e-32 -1.5708</pose>
+<parent>thruster_base</parent>
+<child>thruster_helice</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity><lower>-6.28319</lower><upper>6.28319</upper></limit>
+</axis>
+</joint>
+
+<joint name="casco_thruster" type="fixed">
+<pose>-0.00420826 -2.44379e-10 -0.12 7.66335e-47 1.31372e-46 -1.5708</pose>
+<parent>casco</parent>
+<child>thruster_base</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity></limit>
+</axis>
+</joint>
+
+<link name="sonar_ping360">
+<frame name="sonar_ping360_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="sonar_ping360_0_sonar_ping360_visual">
+<pose>0.192954 0 -0.0736488 1.25525e-16 -0 -1.5708</pose>
+<geometry>
+<mesh><uri>file://sonar_ping360.stl</uri></mesh>
+</geometry>
+<material><ambient>0.615686 0.811765 0.929412 1</ambient><diffuse>0.615686 0.811765 0.929412 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="sonar_ping360_0_sonar_ping360_visual">
+<pose>0.192954 0 -0.0736488 1.25525e-16 -0 -1.5708</pose>
+<geometry>
+<mesh><uri>file://myrobot//sonar_ping360.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="sonar_ping360_frame">0.195288 8.51618e-09 -0.0746632 0 0 0</pose>
+<mass>325.854</mass>
+<inertia><ixx>0.208301</ixx><ixy>7.21529e-08</ixy><ixz>-0.00323426</ixz><iyy>0.286317</iyy><iyz>7.7018e-08</iyz><izz>0.282082</izz></inertia>
+</inertial>
+</link>
+
+<joint name="sonar" type="fixed">
+<pose>0.15282 0 -0.075 1.5708 -0 -1.5708</pose>
+<parent>casco</parent>
+<child>sonar_ping360</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity></limit>
+</axis>
+</joint>
+
+<link name="penetrator_sonar">
+<frame name="penetrator_sonar_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="penetrator_sonar_0_penetrator_sonar_visual">
+<pose>0.12382 0 -0.0226 -0 1.5708 0</pose>
+<geometry>
+<mesh><uri>file://penetrator_sonar.stl</uri></mesh>
+</geometry>
+<material><ambient>1 0 0 1</ambient><diffuse>1 0 0 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="penetrator_sonar_0_penetrator_sonar_visual">
+<pose>0.12382 0 -0.0226 -0 1.5708 0</pose>
+<geometry>
+<mesh><uri>file://myrobot//penetrator_sonar.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="penetrator_sonar_frame">0.121748 -1.23041e-06 -0.0225997 0 0 0</pose>
+<mass>0.00763249</mass>
+<inertia><ixx>2.68146e-07</ixx><ixy>-1.54418e-10</ixy><ixz>1.26332e-10</ixz><iyy>9.66562e-07</iyy><iyz>4.99877e-12</iyz><izz>9.47319e-07</izz></inertia>
+</inertial>
+</link>
+
+<joint name="pntr_sonar" type="fixed">
+<pose>0.12382 0 -0.0226 -3.14159 1.5708 0</pose>
+<parent>casco</parent>
+<child>penetrator_sonar</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity></limit>
+</axis>
+</joint>
+
+<link name="nut_thruster">
+<frame name="nut_thruster_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="nut_thruster_0_nut_thruster_visual">
+<pose>-0.0332965 -0.000210673 -0.099 0 -0 0</pose>
+<geometry>
+<mesh><uri>file://nut_thruster.stl</uri></mesh>
+</geometry>
+<material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="nut_thruster_0_nut_thruster_visual">
+<pose>-0.0332965 -0.000210673 -0.099 0 -0 0</pose>
+<geometry>
+<mesh><uri>file://myrobot//nut_thruster.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="nut_thruster_frame">-0.0332918 -0.000211283 -0.091 0 0 0</pose>
+<mass>0.00744372</mass>
+<inertia><ixx>3.21983e-07</ixx><ixy>3.23981e-12</ixy><ixz>-2.14877e-11</ixz><iyy>3.47049e-07</iyy><iyz>-1.63031e-10</iyz><izz>3.58177e-07</izz></inertia>
+</inertial>
+</link>
+
+<joint name="nut_thruster" type="fixed">
+<pose>-0.033384 -8.13152e-19 -0.083 0 -0 0</pose>
+<parent>casco</parent>
+<child>nut_thruster</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity></limit>
+</axis>
+</joint>
+
+<link name="penetrator_thruster">
+<frame name="penetrator_thruster_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="penetrator_thruster_0_penetrator_thruster_visual">
+<pose>-0.033384 0 -0.08 0 -0 0</pose>
+<geometry>
+<mesh><uri>file://penetrator_thruster.stl</uri></mesh>
+</geometry>
+<material><ambient>0.25098 0.25098 0.25098 1</ambient><diffuse>0.25098 0.25098 0.25098 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="penetrator_thruster_0_penetrator_thruster_visual">
+<pose>-0.033384 0 -0.08 0 -0 0</pose>
+<geometry>
+<mesh><uri>file://myrobot//penetrator_thruster.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="penetrator_thruster_frame">-0.0333829 -3.32096e-07 -0.0791557 0 0 0</pose>
+<mass>0.00667911</mass>
+<inertia><ixx>9.39755e-07</ixx><ixy>-5.76856e-12</ixy><ixz>-7.58764e-11</ixz><iyy>9.67415e-07</iyy><iyz>1.67125e-10</iyz><izz>2.93346e-07</izz></inertia>
+</inertial>
+</link>
+
+<joint name="pntr_th" type="fixed">
+<pose>-0.033384 0 -0.08 3.14159 -0 0</pose>
+<parent>casco</parent>
+<child>penetrator_thruster</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity></limit>
+</axis>
+</joint>
+
+<link name="nut_sonar">
+<frame name="nut_sonar_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="nut_sonar_0_nut_sonar_visual">
+<pose>0.119455 2.95444e-05 -0.022826 -0 -1.5708 0</pose>
+<geometry>
+<mesh><uri>file://nut_sonar.stl</uri></mesh>
+</geometry>
+<material><ambient>1 0 0 1</ambient><diffuse>1 0 0 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="nut_sonar_0_nut_sonar_visual">
+<pose>0.119455 2.95444e-05 -0.022826 -0 -1.5708 0</pose>
+<geometry>
+<mesh><uri>file://myrobot//nut_sonar.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="nut_sonar_frame">0.115455 3.69763e-05 -0.0228203 0 0 0</pose>
+<mass>0.00367746</mass>
+<inertia><ixx>1.75803e-07</ixx><ixy>4.46138e-11</ixy><ixz>5.75411e-11</ixz><iyy>1.12562e-07</iyy><iyz>-4.38025e-15</iyz><izz>1.00976e-07</izz></inertia>
+</inertial>
+</link>
+
+<joint name="nut_sonar" type="fixed">
+<pose>0.119455 -2.15824e-18 -0.0226 -3.14159 -1.5708 0</pose>
+<parent>casco</parent>
+<child>nut_sonar</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity></limit>
+</axis>
+</joint>
+
+<link name="eixo_flap_base">
+<frame name="eixo_flap_base_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="eixo_flap_base_0_eixo_flap_base_visual">
+<pose>-0.0627976 -0.111579 -0.0364809 0 -0 0</pose>
+<geometry>
+<mesh><uri>file://eixo_flap_base.stl</uri></mesh>
+</geometry>
+<material><ambient>0.647059 0.647059 0.647059 1</ambient><diffuse>0.647059 0.647059 0.647059 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="eixo_flap_base_0_eixo_flap_base_visual">
+<pose>-0.0627976 -0.111579 -0.0364809 0 -0 0</pose>
+<geometry>
+<mesh><uri>file://myrobot//eixo_flap_base.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="eixo_flap_base_frame">-0.0627976 -0.110371 -0.0362642 0 0 0</pose>
+<mass>0.0524351</mass>
+<inertia><ixx>9.96193e-05</ixx><ixy>0</ixy><ixz>0</ixz><iyy>5.84093e-07</iyy><iyz>-6.11175e-07</iyz><izz>9.9509e-05</izz></inertia>
+</inertial>
+</link>
+
+<joint name="b_eixo_flap_l" type="fixed">
+<pose>-0.0627976 -0.0590786 -0.0364809 1.5708 -0 0</pose>
+<parent>casco</parent>
+<child>eixo_flap_base</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity></limit>
+</axis>
+</joint>
+
+<link name="eixo_flap">
+<frame name="eixo_flap_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="eixo_flap_0_eixo_flap_visual">
+<pose>-0.0627976 -0.1097 -0.0364809 0 -0 0</pose>
+<geometry>
+<mesh><uri>file://eixo_flap.stl</uri></mesh>
+</geometry>
+<material><ambient>0.647059 0.647059 0.647059 1</ambient><diffuse>0.647059 0.647059 0.647059 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="eixo_flap_0_eixo_flap_visual">
+<pose>-0.0627976 -0.1097 -0.0364809 0 -0 0</pose>
+<geometry>
+<mesh><uri>file://myrobot//eixo_flap.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="eixo_flap_frame">-0.0627976 -0.108906 -0.0364838 0 0 0</pose>
+<mass>0.0104144</mass>
+<inertia><ixx>2.92663e-05</ixx><ixy>-2.12095e-13</ixy><ixz>3.198e-14</ixz><iyy>1.16968e-08</iyy><iyz>2.63433e-09</iyz><izz>2.92663e-05</izz></inertia>
+</inertial>
+</link>
+
+<link name="flap">
+<frame name="flap_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="flap_0_flap_visual">
+<pose>-0.0627976 -0.1002 -0.0364809 3.14159 -0 3.14159</pose>
+<geometry>
+<mesh><uri>file://flap.stl</uri></mesh>
+</geometry>
+<material><ambient>0.615686 0.811765 0.929412 1</ambient><diffuse>0.615686 0.811765 0.929412 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="flap_0_flap_visual">
+<pose>-0.0627976 -0.1002 -0.0364809 3.14159 -0 3.14159</pose>
+<geometry>
+<mesh><uri>file://myrobot//flap.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="flap_frame">-0.04424 -0.135138 -0.0364811 0 0 0</pose>
+<mass>0.0620715</mass>
+<inertia><ixx>7.85311e-05</ixx><ixy>-4.11493e-06</ixy><ixz>-1.41447e-10</ixz><iyy>2.12594e-05</iyy><iyz>-6.03888e-11</iyz><izz>9.76631e-05</izz></inertia>
+</inertial>
+</link>
+
+<link name="pç_flap">
+<frame name="pç_flap_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="pç_flap_0_pç_flap_visual">
+<pose>-0.0627976 -0.2022 -0.0364809 -1.5708 -0 -3.14159</pose>
+<geometry>
+<mesh><uri>file://pç_flap.stl</uri></mesh>
+</geometry>
+<material><ambient>0.615686 0.811765 0.929412 1</ambient><diffuse>0.615686 0.811765 0.929412 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="pç_flap_0_pç_flap_visual">
+<pose>-0.0627976 -0.2022 -0.0364809 -1.5708 -0 -3.14159</pose>
+<geometry>
+<mesh><uri>file://myrobot//pç_flap.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="pç_flap_frame">-0.0582766 -0.2037 -0.0364809 0 0 0</pose>
+<mass>0.000621423</mass>
+<inertia><ixx>4.85566e-09</ixx><ixy>0</ixy><ixz>1.61283e-38</ixz><iyy>3.17799e-08</iyy><iyz>0</iyz><izz>2.78564e-08</izz></inertia>
+</inertial>
+</link>
+
+<joint name="pç_flap_l" type="fixed">
+<pose>-0.0415418 -0.2052 -0.0371606 -1.5708 -0 -3.14159</pose>
+<parent>flap</parent>
+<child>pç_flap</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity></limit>
+</axis>
+</joint>
+
+<joint name="ex_flp_l" type="fixed">
+<pose>-0.0627976 -0.2007 -0.0364809 -1.5708 -0 3.14159</pose>
+<parent>eixo_flap</parent>
+<child>flap</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity></limit>
+</axis>
+</joint>
+
+<link name="gaxeta">
+<frame name="gaxeta_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="gaxeta_0_gaxeta_visual">
+<pose>-0.0627976 -0.0346 -0.0364809 -1.5708 -0 0</pose>
+<geometry>
+<mesh><uri>file://gaxeta.stl</uri></mesh>
+</geometry>
+<material><ambient>0.615686 0.811765 0.929412 1</ambient><diffuse>0.615686 0.811765 0.929412 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="gaxeta_0_gaxeta_visual">
+<pose>-0.0627976 -0.0346 -0.0364809 -1.5708 -0 0</pose>
+<geometry>
+<mesh><uri>file://myrobot//gaxeta.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="gaxeta_frame">-0.0627976 -0.0315927 -0.0365248 0 0 0</pose>
+<mass>0.00144054</mass>
+<inertia><ixx>9.39445e-09</ixx><ixy>-3.17149e-16</ixy><ixz>-1.49997e-15</ixz><iyy>1.03195e-08</iyy><iyz>-6.64662e-11</iyz><izz>1.0572e-08</izz></inertia>
+</inertial>
+</link>
+
+<link name="borracha_eixo">
+<frame name="borracha_eixo_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="borracha_eixo_0_borracha_eixo_visual">
+<pose>-0.0627976 -0.0346 -0.0364809 0 -0 0</pose>
+<geometry>
+<mesh><uri>file://borracha_eixo.stl</uri></mesh>
+</geometry>
+<material><ambient>0.917647 0.917647 0.917647 1</ambient><diffuse>0.917647 0.917647 0.917647 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="borracha_eixo_0_borracha_eixo_visual">
+<pose>-0.0627976 -0.0346 -0.0364809 0 -0 0</pose>
+<geometry>
+<mesh><uri>file://myrobot//borracha_eixo.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="borracha_eixo_frame">-0.0627976 -0.0356 -0.0364809 0 0 0</pose>
+<mass>8.94176e-05</mass>
+<inertia><ixx>4.55937e-10</ixx><ixy>0</ixy><ixz>0</ixz><iyy>8.52261e-10</iyy><iyz>0</iyz><izz>4.55937e-10</izz></inertia>
+</inertial>
+</link>
+
+<joint name="bch_l" type="fixed">
+<pose>-0.0627976 -0.0346 -0.0364809 -1.5708 -0 0</pose>
+<parent>gaxeta</parent>
+<child>borracha_eixo</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity></limit>
+</axis>
+</joint>
+
+<joint name="gaxeta_l" type="fixed">
+<pose>-0.0627976 -0.0346 -0.0364809 1.5708 -0 0</pose>
+<parent>eixo_flap</parent>
+<child>gaxeta</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity></limit>
+</axis>
+</joint>
+
+<joint name="flap_l" type="revolute">
+<pose>-0.0627976 -0.0852 -0.0364809 -1.5708 -0 0</pose>
+<parent>casco</parent>
+<child>eixo_flap</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity><lower>0</lower><upper>1.5708</upper></limit>
+</axis>
+</joint>
+
+<link name="eixo_flap_base_2">
+<frame name="eixo_flap_base_2_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="eixo_flap_base_2_0_eixo_flap_base_visual">
+<pose>-0.0627976 0.111579 -0.0364809 4.93038e-32 3.08149e-32 -3.14159</pose>
+<geometry>
+<mesh><uri>file://eixo_flap_base.stl</uri></mesh>
+</geometry>
+<material><ambient>0.647059 0.647059 0.647059 1</ambient><diffuse>0.647059 0.647059 0.647059 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="eixo_flap_base_2_0_eixo_flap_base_visual">
+<pose>-0.0627976 0.111579 -0.0364809 4.93038e-32 3.08149e-32 -3.14159</pose>
+<geometry>
+<mesh><uri>file://myrobot//eixo_flap_base.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="eixo_flap_base_2_frame">-0.0627976 0.110371 -0.0362642 0 0 0</pose>
+<mass>0.0524351</mass>
+<inertia><ixx>9.96193e-05</ixx><ixy>6.95301e-22</ixy><ixz>4.24088e-24</ixz><iyy>5.84093e-07</iyy><iyz>6.11175e-07</iyz><izz>9.9509e-05</izz></inertia>
+</inertial>
+</link>
+
+<joint name="b_eixo_flap_r" type="fixed">
+<pose>-0.0627976 0.0590786 -0.0364809 1.5708 3.08149e-32 -3.14159</pose>
+<parent>casco</parent>
+<child>eixo_flap_base_2</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity></limit>
+</axis>
+</joint>
+
+<link name="eixo_flap_2">
+<frame name="eixo_flap_2_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="eixo_flap_2_0_eixo_flap_visual">
+<pose>-0.0627976 0.1097 -0.0364809 -1.36173e-30 3.33067e-16 3.14159</pose>
+<geometry>
+<mesh><uri>file://eixo_flap.stl</uri></mesh>
+</geometry>
+<material><ambient>0.647059 0.647059 0.647059 1</ambient><diffuse>0.647059 0.647059 0.647059 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="eixo_flap_2_0_eixo_flap_visual">
+<pose>-0.0627976 0.1097 -0.0364809 -1.36173e-30 3.33067e-16 3.14159</pose>
+<geometry>
+<mesh><uri>file://myrobot//eixo_flap.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="eixo_flap_2_frame">-0.0627976 0.108906 -0.0364838 0 0 0</pose>
+<mass>0.0104144</mass>
+<inertia><ixx>2.92663e-05</ixx><ixy>-2.12095e-13</ixy><ixz>-3.198e-14</ixz><iyy>1.16968e-08</iyy><iyz>-2.63433e-09</iyz><izz>2.92663e-05</izz></inertia>
+</inertial>
+</link>
+
+<link name="gaxeta_2">
+<frame name="gaxeta_2_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="gaxeta_2_0_gaxeta_visual">
+<pose>-0.0627976 0.0346 -0.0364809 -1.5708 6.10623e-16 3.14159</pose>
+<geometry>
+<mesh><uri>file://gaxeta.stl</uri></mesh>
+</geometry>
+<material><ambient>0.615686 0.811765 0.929412 1</ambient><diffuse>0.615686 0.811765 0.929412 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="gaxeta_2_0_gaxeta_visual">
+<pose>-0.0627976 0.0346 -0.0364809 -1.5708 6.10623e-16 3.14159</pose>
+<geometry>
+<mesh><uri>file://myrobot//gaxeta.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="gaxeta_2_frame">-0.0627976 0.0315927 -0.0365248 0 0 0</pose>
+<mass>0.00144054</mass>
+<inertia><ixx>9.39445e-09</ixx><ixy>3.17149e-16</ixy><ixz>-1.49997e-15</ixz><iyy>1.03195e-08</iyy><iyz>6.64662e-11</iyz><izz>1.0572e-08</izz></inertia>
+</inertial>
+</link>
+
+<link name="borracha_eixo_2">
+<frame name="borracha_eixo_2_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="borracha_eixo_2_0_borracha_eixo_visual">
+<pose>-0.0627976 0.0366 -0.0364809 6.10623e-16 -6.10623e-16 -5.94727e-31</pose>
+<geometry>
+<mesh><uri>file://borracha_eixo.stl</uri></mesh>
+</geometry>
+<material><ambient>0.917647 0.917647 0.917647 1</ambient><diffuse>0.917647 0.917647 0.917647 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="borracha_eixo_2_0_borracha_eixo_visual">
+<pose>-0.0627976 0.0366 -0.0364809 6.10623e-16 -6.10623e-16 -5.94727e-31</pose>
+<geometry>
+<mesh><uri>file://myrobot//borracha_eixo.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="borracha_eixo_2_frame">-0.0627976 0.0356 -0.0364809 0 0 0</pose>
+<mass>8.94176e-05</mass>
+<inertia><ixx>4.55937e-10</ixx><ixy>3.57189e-40</ixy><ixz>1.26548e-25</ixz><iyy>8.52261e-10</iyy><iyz>-2.42005e-25</iyz><izz>4.55937e-10</izz></inertia>
+</inertial>
+</link>
+
+<joint name="bch_r" type="fixed">
+<pose>-0.0627976 0.0346 -0.0364809 1.5708 -6.10623e-16 -5.94727e-31</pose>
+<parent>gaxeta_2</parent>
+<child>borracha_eixo_2</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity></limit>
+</axis>
+</joint>
+
+<joint name="gaxeta_r" type="fixed">
+<pose>-0.0627976 0.0346 -0.0364809 1.5708 6.10623e-16 3.14159</pose>
+<parent>eixo_flap_2</parent>
+<child>gaxeta_2</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity></limit>
+</axis>
+</joint>
+
+<link name="flap_2">
+<frame name="flap_2_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="flap_2_0_flap_visual">
+<pose>-0.0627976 0.1002 -0.0364809 -6.10623e-16 5.55112e-16 3.14159</pose>
+<geometry>
+<mesh><uri>file://flap.stl</uri></mesh>
+</geometry>
+<material><ambient>0.615686 0.811765 0.929412 1</ambient><diffuse>0.615686 0.811765 0.929412 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="flap_2_0_flap_visual">
+<pose>-0.0627976 0.1002 -0.0364809 -6.10623e-16 5.55112e-16 3.14159</pose>
+<geometry>
+<mesh><uri>file://myrobot//flap.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="flap_2_frame">-0.04424 0.135138 -0.0364807 0 0 0</pose>
+<mass>0.0620715</mass>
+<inertia><ixx>7.85311e-05</ixx><ixy>4.11493e-06</ixy><ixz>1.41447e-10</ixz><iyy>2.12594e-05</iyy><iyz>-6.03888e-11</iyz><izz>9.76631e-05</izz></inertia>
+</inertial>
+</link>
+
+<link name="pç_flap_2">
+<frame name="pç_flap_2_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="pç_flap_2_0_pç_flap_visual">
+<pose>-0.0627976 0.2052 -0.0364809 -1.5708 5.55112e-16 3.14159</pose>
+<geometry>
+<mesh><uri>file://pç_flap.stl</uri></mesh>
+</geometry>
+<material><ambient>0.615686 0.811765 0.929412 1</ambient><diffuse>0.615686 0.811765 0.929412 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="pç_flap_2_0_pç_flap_visual">
+<pose>-0.0627976 0.2052 -0.0364809 -1.5708 5.55112e-16 3.14159</pose>
+<geometry>
+<mesh><uri>file://myrobot//pç_flap.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="pç_flap_2_frame">-0.0582766 0.2037 -0.0364809 0 0 0</pose>
+<mass>0.000621423</mass>
+<inertia><ixx>4.85566e-09</ixx><ixy>1.57546e-23</ixy><ixz>-1.87501e-38</ixz><iyy>3.17799e-08</iyy><iyz>2.3958e-24</iyz><izz>2.78564e-08</izz></inertia>
+</inertial>
+</link>
+
+<joint name="pç_flap_r" type="fixed">
+<pose>-0.0627976 0.2052 -0.0364809 1.5708 5.55112e-16 3.14159</pose>
+<parent>flap_2</parent>
+<child>pç_flap_2</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity></limit>
+</axis>
+</joint>
+
+<joint name="ex_flp_r" type="fixed">
+<pose>-0.0627976 0.2007 -0.0364809 1.5708 5.55112e-16 3.14159</pose>
+<parent>eixo_flap_2</parent>
+<child>flap_2</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity></limit>
+</axis>
+</joint>
+
+<joint name="flap_r" type="revolute">
+<pose>-0.0627976 0.0852 -0.0364809 -1.5708 3.33067e-16 3.14159</pose>
+<parent>casco</parent>
+<child>eixo_flap_2</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity><lower>-1.5708</lower><upper>0</upper></limit>
+</axis>
+</joint>
+
+<link name="eixo_flap_base_3">
+<frame name="eixo_flap_base_3_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="eixo_flap_base_3_0_eixo_flap_base_visual">
+<pose>0.0801351 2.75546e-19 -0.124559 1.5708 2.59085e-77 -1.5708</pose>
+<geometry>
+<mesh><uri>file://eixo_flap_base.stl</uri></mesh>
+</geometry>
+<material><ambient>0.647059 0.647059 0.647059 1</ambient><diffuse>0.647059 0.647059 0.647059 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="eixo_flap_base_3_0_eixo_flap_base_visual">
+<pose>0.0801351 2.75546e-19 -0.124559 1.5708 2.59085e-77 -1.5708</pose>
+<geometry>
+<mesh><uri>file://myrobot//eixo_flap_base.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="eixo_flap_base_3_frame">0.0799185 2.54572e-19 -0.123352 0 0 0</pose>
+<mass>0.0524351</mass>
+<inertia><ixx>5.84093e-07</ixx><ixy>6.11175e-07</ixy><ixz>3.61599e-37</ixz><iyy>9.9509e-05</iyy><iyz>1.17813e-34</iyz><izz>9.96193e-05</izz></inertia>
+</inertial>
+</link>
+
+<joint name="b_eixo_rud" type="fixed">
+<pose>0.0801351 2.75546e-19 -0.072059 3.14159 2.59085e-77 -1.5708</pose>
+<parent>casco</parent>
+<child>eixo_flap_base_3</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity></limit>
+</axis>
+</joint>
+
+<link name="rudder">
+<frame name="rudder_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="rudder_0_rudder_visual">
+<pose>0.0801351 5.51091e-19 -0.12 -1.97215e-30 6.90253e-31 -3.14159</pose>
+<geometry>
+<mesh><uri>file://rudder.stl</uri></mesh>
+</geometry>
+<material><ambient>0.615686 0.811765 0.929412 1</ambient><diffuse>0.615686 0.811765 0.929412 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="rudder_0_rudder_visual">
+<pose>0.0801351 5.51091e-19 -0.12 -1.97215e-30 6.90253e-31 -3.14159</pose>
+<geometry>
+<mesh><uri>file://myrobot//rudder.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="rudder_frame">0.102529 1.52044e-07 -0.162977 0 0 0</pose>
+<mass>0.055288</mass>
+<inertia><ixx>4.87291e-05</ixx><ixy>1.12153e-10</ixy><ixz>-3.03988e-06</ixz><iyy>7.21687e-05</iyy><iyz>1.2272e-11</iyz><izz>2.53851e-05</izz></inertia>
+</inertial>
+</link>
+
+<link name="eixo_flap_3">
+<frame name="eixo_flap_3_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="eixo_flap_3_0_eixo_flap_visual">
+<pose>0.0801351 6.82741e-19 -0.1235 1.5708 6.96416e-31 -3.14159</pose>
+<geometry>
+<mesh><uri>file://eixo_flap.stl</uri></mesh>
+</geometry>
+<material><ambient>0.647059 0.647059 0.647059 1</ambient><diffuse>0.647059 0.647059 0.647059 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="eixo_flap_3_0_eixo_flap_visual">
+<pose>0.0801351 6.82741e-19 -0.1235 1.5708 6.96416e-31 -3.14159</pose>
+<geometry>
+<mesh><uri>file://myrobot//eixo_flap.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="eixo_flap_3_frame">0.0801351 -2.86529e-06 -0.122706 0 0 0</pose>
+<mass>0.0104144</mass>
+<inertia><ixx>2.92663e-05</ixx><ixy>-3.198e-14</ixy><ixz>2.12095e-13</ixz><iyy>2.92663e-05</iyy><iyz>2.63433e-09</iyz><izz>1.16968e-08</izz></inertia>
+</inertial>
+</link>
+
+<link name="gaxeta_3">
+<frame name="gaxeta_3_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="gaxeta_3_0_gaxeta_visual">
+<pose>0.0801351 5.60276e-19 -0.0484 -6.22752e-16 -7.88861e-31 3.05311e-16</pose>
+<geometry>
+<mesh><uri>file://gaxeta.stl</uri></mesh>
+</geometry>
+<material><ambient>0.615686 0.811765 0.929412 1</ambient><diffuse>0.615686 0.811765 0.929412 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="gaxeta_3_0_gaxeta_visual">
+<pose>0.0801351 5.60276e-19 -0.0484 -6.22752e-16 -7.88861e-31 3.05311e-16</pose>
+<geometry>
+<mesh><uri>file://myrobot//gaxeta.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="gaxeta_3_frame">0.0801351 4.38898e-05 -0.0453927 0 0 0</pose>
+<mass>0.00144054</mass>
+<inertia><ixx>9.39445e-09</ixx><ixy>-1.49997e-15</ixy><ixz>3.17149e-16</ixz><iyy>1.0572e-08</iyy><iyz>6.64662e-11</iyz><izz>1.03195e-08</izz></inertia>
+</inertial>
+</link>
+
+<link name="borracha_eixo2">
+<frame name="borracha_eixo2_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="borracha_eixo2_0_borracha_eixo2_visual">
+<pose>0.0801351 5.01668e-19 -0.0484 1.5708 4.34962e-15 -3.14159</pose>
+<geometry>
+<mesh><uri>file://borracha_eixo2.stl</uri></mesh>
+</geometry>
+<material><ambient>0.917647 0.917647 0.917647 1</ambient><diffuse>0.917647 0.917647 0.917647 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="borracha_eixo2_0_borracha_eixo2_visual">
+<pose>0.0801351 5.01668e-19 -0.0484 1.5708 4.34962e-15 -3.14159</pose>
+<geometry>
+<mesh><uri>file://myrobot//borracha_eixo2.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="borracha_eixo2_frame">0.0801351 8.61463e-19 -0.04895 0 0 0</pose>
+<mass>5.10898e-05</mass>
+<inertia><ixx>2.42208e-10</ixx><ixy>1.05351e-24</ixy><ixz>1.76111e-24</ixz><iyy>2.42208e-10</iyy><iyz>-5.2384e-24</iyz><izz>4.74114e-10</izz></inertia>
+</inertial>
+</link>
+
+<joint name="bch_gax_rud" type="fixed">
+<pose>0.0801351 7.74589e-19 -0.0484 2.16277e-14 4.34962e-15 -3.14159</pose>
+<parent>gaxeta_3</parent>
+<child>borracha_eixo2</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity></limit>
+</axis>
+</joint>
+
+<joint name="gax_eix_rud" type="fixed">
+<pose>0.0801351 7.74589e-19 -0.0484 3.14159 -7.88861e-31 3.05311e-16</pose>
+<parent>eixo_flap_3</parent>
+<child>gaxeta_3</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity></limit>
+</axis>
+</joint>
+
+<joint name="ex_rudder" type="fixed">
+<pose>0.0801351 7.74589e-19 -0.2145 3.14159 6.96416e-31 -3.14159</pose>
+<parent>rudder</parent>
+<child>eixo_flap_3</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity></limit>
+</axis>
+</joint>
+
+<link name="pç_rudder">
+<frame name="pç_rudder_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="pç_rudder_0_pç_rudder_visual">
+<pose>0.0801351 0 -0.22 -2.85962e-30 1.04154e-30 -3.14159</pose>
+<geometry>
+<mesh><uri>file://pç_rudder.stl</uri></mesh>
+</geometry>
+<material><ambient>0.615686 0.811765 0.929412 1</ambient><diffuse>0.615686 0.811765 0.929412 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="pç_rudder_0_pç_rudder_visual">
+<pose>0.0801351 0 -0.22 -2.85962e-30 1.04154e-30 -3.14159</pose>
+<geometry>
+<mesh><uri>file://myrobot//pç_rudder.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="pç_rudder_frame">0.0846561 2.07047e-18 -0.2185 0 0 0</pose>
+<mass>0.000621423</mass>
+<inertia><ixx>4.85566e-09</ixx><ixy>1.4981e-23</ixy><ixz>-3.81575e-38</ixz><iyy>2.78564e-08</iyy><iyz>-1.70537e-37</iyz><izz>3.17799e-08</izz></inertia>
+</inertial>
+</link>
+
+<joint name="pç_rudder" type="fixed">
+<pose>0.0801351 -3.97223e-34 -0.22 3.14159 1.04154e-30 -3.14159</pose>
+<parent>rudder</parent>
+<child>pç_rudder</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity></limit>
+</axis>
+</joint>
+
+<joint name="rudder" type="revolute">
+<pose>0.0801351 2.75546e-19 -0.12 -1.97215e-30 6.90253e-31 -3.14159</pose>
+<parent>casco</parent>
+<child>rudder</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity><lower>-1.5708</lower><upper>1.5708</upper></limit>
+</axis>
+</joint>
+
+<link name="tampa_casco">
+<frame name="tampa_casco_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="tampa_casco_0_tampa_casco_visual">
+<pose>-2.02179e-06 0 0 0 -0 3.14159</pose>
+<geometry>
+<mesh><uri>file://tampa_casco.stl</uri></mesh>
+</geometry>
+<material><ambient>0.32549 0.529412 0.752941 1</ambient><diffuse>0.32549 0.529412 0.752941 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="tampa_casco_0_tampa_casco_visual">
+<pose>-2.02179e-06 0 0 0 -0 3.14159</pose>
+<geometry>
+<mesh><uri>file://myrobot//tampa_casco.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="tampa_casco_frame">0.0036756 -0.000208789 0.0224736 0 0 0</pose>
+<mass>0.885526</mass>
+<inertia><ixx>0.00215907</ixx><ixy>-3.35604e-06</ixy><ixz>-9.28542e-05</ixz><iyy>0.0105401</iyy><iyz>3.97594e-06</iyz><izz>0.0122909</izz></inertia>
+</inertial>
+</link>
+
+<link name="antena">
+<frame name="antena_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="antena_0_antena_visual">
+<pose>0.140207 0 0.045 0 -0 0</pose>
+<geometry>
+<mesh><uri>file://antena.stl</uri></mesh>
+</geometry>
+<material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="antena_0_antena_visual">
+<pose>0.140207 0 0.045 0 -0 0</pose>
+<geometry>
+<mesh><uri>file://myrobot//antena.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="antena_frame">0.140207 2.33761e-19 0.0750765 0 0 0</pose>
+<mass>0.00319034</mass>
+<inertia><ixx>9.92956e-07</ixx><ixy>0</ixy><ixz>0</ixz><iyy>9.92956e-07</iyy><iyz>0</iyz><izz>2.52452e-08</izz></inertia>
+</inertial>
+</link>
+
+<joint name="antena" type="fixed">
+<pose>0.140207 2.46156e-19 0.045 3.14159 -0 0</pose>
+<parent>tampa_casco</parent>
+<child>antena</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity></limit>
+</axis>
+</joint>
+
+<link name="tampa_bateria">
+<frame name="tampa_bateria_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="tampa_bateria_0_tampa_bateria_visual">
+<pose>0.084298 0.0008 0.078 0 -0 -1.5708</pose>
+<geometry>
+<mesh><uri>file://tampa_bateria.stl</uri></mesh>
+</geometry>
+<material><ambient>0.32549 0.529412 0.752941 1</ambient><diffuse>0.32549 0.529412 0.752941 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="tampa_bateria_0_tampa_bateria_visual">
+<pose>0.084298 0.0008 0.078 0 -0 -1.5708</pose>
+<geometry>
+<mesh><uri>file://myrobot//tampa_bateria.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="tampa_bateria_frame">-0.000702023 0.0008 0.0882991 0 0 0</pose>
+<mass>0.132729</mass>
+<inertia><ixx>0.000191931</ixx><ixy>0</ixy><ixz>0</ixz><iyy>0.000524468</iyy><iyz>0</iyz><izz>0.000586683</izz></inertia>
+</inertial>
+</link>
+
+<link name="bateria">
+<frame name="bateria_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="bateria_0_bateria_visual">
+<pose>0.066298 0.0008 0.078 0 -0 -1.5708</pose>
+<geometry>
+<mesh><uri>file://bateria.stl</uri></mesh>
+</geometry>
+<material><ambient>0.301961 0.301961 0.301961 1</ambient><diffuse>0.301961 0.301961 0.301961 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="bateria_0_bateria_visual">
+<pose>0.066298 0.0008 0.078 0 -0 -1.5708</pose>
+<geometry>
+<mesh><uri>file://myrobot//bateria.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="bateria_frame">-0.00420202 0.0008 0.078 0 0 0</pose>
+<mass>0.332639</mass>
+<inertia><ixx>0.000233887</ixx><ixy>7.23015e-20</ixy><ixz>0</ixz><iyy>0.000668042</iyy><iyz>0</iyz><izz>0.000668042</izz></inertia>
+</inertial>
+</link>
+
+<joint name="bat_tamp" type="fixed">
+<pose>0.066298 0.0008 0.078 -1.5708 -0 -1.5708</pose>
+<parent>tampa_bateria</parent>
+<child>bateria</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity></limit>
+</axis>
+</joint>
+
+<joint name="sup_tampa_bat" type="fixed">
+<pose>-0.082702 0.0403 0.048 3.14159 -0 -1.5708</pose>
+<parent>tampa_casco</parent>
+<child>tampa_bateria</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity></limit>
+</axis>
+</joint>
+
+<link name="suporte_dome">
+<frame name="suporte_dome_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="suporte_dome_0_suporte_dome_visual">
+<pose>-0.119512 0 0.048 0 -0 0</pose>
+<geometry>
+<mesh><uri>file://suporte_dome.stl</uri></mesh>
+</geometry>
+<material><ambient>0.32549 0.529412 0.752941 1</ambient><diffuse>0.32549 0.529412 0.752941 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="suporte_dome_0_suporte_dome_visual">
+<pose>-0.119512 0 0.048 0 -0 0</pose>
+<geometry>
+<mesh><uri>file://myrobot//suporte_dome.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="suporte_dome_frame">-0.119512 2.15974e-18 0.0605 0 0 0</pose>
+<mass>0.00776665</mass>
+<inertia><ixx>2.55296e-06</ixx><ixy>0</ixy><ixz>0</ixz><iyy>2.55296e-06</iyy><iyz>0</iyz><izz>4.2969e-06</izz></inertia>
+</inertial>
+</link>
+
+<link name="dome">
+<frame name="dome_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="dome_0_dome_visual">
+<pose>-0.119512 0 0.068 0 -0 0</pose>
+<geometry>
+<mesh><uri>file://dome.stl</uri></mesh>
+</geometry>
+<material><ambient>0.603922 0.647059 0.686275 1</ambient><diffuse>0.603922 0.647059 0.686275 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="dome_0_dome_visual">
+<pose>-0.119512 0 0.068 0 -0 0</pose>
+<geometry>
+<mesh><uri>file://myrobot//dome.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="dome_frame">-0.119512 1.53081e-18 0.0955028 0 0 0</pose>
+<mass>0.0109214</mass>
+<inertia><ixx>4.46048e-06</ixx><ixy>0</ixy><ixz>0</ixz><iyy>4.46048e-06</iyy><iyz>2.91904e-53</iyz><izz>5.46494e-06</izz></inertia>
+</inertial>
+</link>
+
+<joint name="dome_sup" type="fixed">
+<pose>-0.119512 1.53081e-18 0.073 3.14159 -0 0</pose>
+<parent>suporte_dome</parent>
+<child>dome</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity></limit>
+</axis>
+</joint>
+
+<joint name="sup_dome" type="fixed">
+<pose>-0.119512 1.50019e-18 0.048 3.14159 -0 0</pose>
+<parent>tampa_casco</parent>
+<child>suporte_dome</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity></limit>
+</axis>
+</joint>
+
+<link name="suporte_camera">
+<frame name="suporte_camera_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="suporte_camera_0_suporte_camera_visual">
+<pose>-0.106988 0 0.0889004 0 -0 -1.5708</pose>
+<geometry>
+<mesh><uri>file://suporte_camera.stl</uri></mesh>
+</geometry>
+<material><ambient>0.615686 0.811765 0.929412 1</ambient><diffuse>0.615686 0.811765 0.929412 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="suporte_camera_0_suporte_camera_visual">
+<pose>-0.106988 0 0.0889004 0 -0 -1.5708</pose>
+<geometry>
+<mesh><uri>file://myrobot//suporte_camera.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="suporte_camera_frame">-0.107787 2.49253e-18 0.0667742 0 0 0</pose>
+<mass>0.00737151</mass>
+<inertia><ixx>3.9037e-06</ixx><ixy>0</ixy><ixz>-5.07583e-07</ixz><iyy>3.56176e-06</iyy><iyz>0</iyz><izz>9.65657e-07</izz></inertia>
+</inertial>
+</link>
+
+<link name="camera">
+<frame name="camera_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="camera_0_camera_visual">
+<pose>-0.113988 -0.016 0.106456 0 -0 1.5708</pose>
+<geometry>
+<mesh><uri>file://camera.stl</uri></mesh>
+</geometry>
+<material><ambient>0.298039 0.298039 0.298039 1</ambient><diffuse>0.298039 0.298039 0.298039 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="camera_0_camera_visual">
+<pose>-0.113988 -0.016 0.106456 0 -0 1.5708</pose>
+<geometry>
+<mesh><uri>file://myrobot//camera.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="camera_frame">-0.121607 -0.000277795 0.0898932 0 0 0</pose>
+<mass>0.00653772</mass>
+<inertia><ixx>5.07669e-07</ixx><ixy>1.77093e-08</ixy><ixz>-4.24461e-08</ixz><iyy>6.10069e-07</iyy><iyz>1.75998e-08</iyz><izz>5.78876e-07</izz></inertia>
+</inertial>
+</link>
+
+<link name="parafuso">
+<frame name="parafuso_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="parafuso_0_parafuso_visual">
+<pose>-0.118588 0.014 0.0764559 0 -0 1.5708</pose>
+<geometry>
+<mesh><uri>file://parafuso.stl</uri></mesh>
+</geometry>
+<material><ambient>0.6 0.580392 0.529412 1</ambient><diffuse>0.6 0.580392 0.529412 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="parafuso_0_parafuso_visual">
+<pose>-0.118588 0.014 0.0764559 0 -0 1.5708</pose>
+<geometry>
+<mesh><uri>file://myrobot//parafuso.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="parafuso_frame">-0.115028 0.014 0.0764559 0 0 0</pose>
+<mass>0.000573713</mass>
+<inertia><ixx>1.46513e-09</ixx><ixy>6.05694e-25</ixy><ixz>0</ixz><iyy>5.1022e-09</iyy><iyz>0</iyz><izz>5.1022e-09</izz></inertia>
+</inertial>
+</link>
+
+<joint name="paraf1" type="fixed">
+<pose>-0.115588 0.014 0.0764559 1.5708 -0 1.5708</pose>
+<parent>camera</parent>
+<child>parafuso</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity></limit>
+</axis>
+</joint>
+
+<link name="parafuso_2">
+<frame name="parafuso_2_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="parafuso_2_0_parafuso_visual">
+<pose>-0.118588 0.014 0.104456 0 -0 1.5708</pose>
+<geometry>
+<mesh><uri>file://parafuso.stl</uri></mesh>
+</geometry>
+<material><ambient>0.6 0.580392 0.529412 1</ambient><diffuse>0.6 0.580392 0.529412 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="parafuso_2_0_parafuso_visual">
+<pose>-0.118588 0.014 0.104456 0 -0 1.5708</pose>
+<geometry>
+<mesh><uri>file://myrobot//parafuso.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="parafuso_2_frame">-0.115028 0.014 0.104456 0 0 0</pose>
+<mass>0.000573713</mass>
+<inertia><ixx>1.46513e-09</ixx><ixy>6.05694e-25</ixy><ixz>0</ixz><iyy>5.1022e-09</iyy><iyz>0</iyz><izz>5.1022e-09</izz></inertia>
+</inertial>
+</link>
+
+<joint name="paraf2" type="fixed">
+<pose>-0.115588 0.014 0.104456 1.5708 -0 1.5708</pose>
+<parent>camera</parent>
+<child>parafuso_2</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity></limit>
+</axis>
+</joint>
+
+<link name="parafuso_3">
+<frame name="parafuso_3_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="parafuso_3_0_parafuso_visual">
+<pose>-0.118588 -0.014 0.0764559 0 -0 1.5708</pose>
+<geometry>
+<mesh><uri>file://parafuso.stl</uri></mesh>
+</geometry>
+<material><ambient>0.6 0.580392 0.529412 1</ambient><diffuse>0.6 0.580392 0.529412 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="parafuso_3_0_parafuso_visual">
+<pose>-0.118588 -0.014 0.0764559 0 -0 1.5708</pose>
+<geometry>
+<mesh><uri>file://myrobot//parafuso.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="parafuso_3_frame">-0.115028 -0.014 0.0764559 0 0 0</pose>
+<mass>0.000573713</mass>
+<inertia><ixx>1.46513e-09</ixx><ixy>6.05694e-25</ixy><ixz>0</ixz><iyy>5.1022e-09</iyy><iyz>0</iyz><izz>5.1022e-09</izz></inertia>
+</inertial>
+</link>
+
+<joint name="paraf3" type="fixed">
+<pose>-0.115588 -0.014 0.0764559 1.5708 -0 1.5708</pose>
+<parent>camera</parent>
+<child>parafuso_3</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity></limit>
+</axis>
+</joint>
+
+<link name="parafuso_4">
+<frame name="parafuso_4_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="parafuso_4_0_parafuso_visual">
+<pose>-0.118588 -0.014 0.104456 0 -0 1.5708</pose>
+<geometry>
+<mesh><uri>file://parafuso.stl</uri></mesh>
+</geometry>
+<material><ambient>0.6 0.580392 0.529412 1</ambient><diffuse>0.6 0.580392 0.529412 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="parafuso_4_0_parafuso_visual">
+<pose>-0.118588 -0.014 0.104456 0 -0 1.5708</pose>
+<geometry>
+<mesh><uri>file://myrobot//parafuso.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="parafuso_4_frame">-0.115028 -0.014 0.104456 0 0 0</pose>
+<mass>0.000573713</mass>
+<inertia><ixx>1.46513e-09</ixx><ixy>6.05694e-25</ixy><ixz>0</ixz><iyy>5.1022e-09</iyy><iyz>0</iyz><izz>5.1022e-09</izz></inertia>
+</inertial>
+</link>
+
+<joint name="paraf4" type="fixed">
+<pose>-0.115588 -0.014 0.104456 1.5708 -0 1.5708</pose>
+<parent>camera</parent>
+<child>parafuso_4</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity></limit>
+</axis>
+</joint>
+
+<joint name="camera" type="fixed">
+<pose>-0.113988 -0.014 0.0764559 1.5708 -0 1.5708</pose>
+<parent>suporte_camera</parent>
+<child>camera</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity></limit>
+</axis>
+</joint>
+
+<link name="parafuso_5">
+<frame name="parafuso_5_frame"><pose>0 0 0 0 -0 0</pose></frame>
+<visual name="parafuso_5_0_parafuso_visual">
+<pose>-0.0898568 0 0.035 -1.5708 -0 0</pose>
+<geometry>
+<mesh><uri>file://parafuso.stl</uri></mesh>
+</geometry>
+<material><ambient>0.6 0.580392 0.529412 1</ambient><diffuse>0.6 0.580392 0.529412 1</diffuse><specular>0.1 0.1 0.1 1</specular><emissive>0 0 0 0</emissive></material>
+</visual>
+<collision name="parafuso_5_0_parafuso_visual">
+<pose>-0.0898568 0 0.035 -1.5708 -0 0</pose>
+<geometry>
+<mesh><uri>file://myrobot//parafuso.stl</uri></mesh>
+</geometry>
+</collision>
+<inertial>
+<pose frame="parafuso_5_frame">-0.0898568 1.94499e-19 0.03856 0 0 0</pose>
+<mass>0.000573713</mass>
+<inertia><ixx>5.1022e-09</ixx><ixy>0</ixy><ixz>0</ixz><iyy>5.1022e-09</iyy><iyz>0</iyz><izz>1.46513e-09</izz></inertia>
+</inertial>
+</link>
+
+<joint name="paraf" type="fixed">
+<pose>-0.0898568 1.53081e-19 0.038 0 -0 0</pose>
+<parent>suporte_camera</parent>
+<child>parafuso_5</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity></limit>
+</axis>
+</joint>
+
+<joint name="camera_sup" type="fixed">
+<pose>-0.0898568 6.89019e-19 0.045 0 -0 -1.5708</pose>
+<parent>tampa_casco</parent>
+<child>suporte_camera</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity></limit>
+</axis>
+</joint>
+
+<joint name="tampa_casco" type="fixed">
+<pose>-0.185162 2.38777e-18 0 3.14159 -0 3.14159</pose>
+<parent>casco</parent>
+<child>tampa_casco</child>
+<axis>
+<xyz>0 0 1</xyz>
+<limit><effort>1</effort><velocity>20</velocity></limit>
+</axis>
+</joint>
+
+
+</model>
+</sdf>
